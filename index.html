@@ -1,156 +1,98 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>VoxyVPN</title>
   <style>
-    :root {
-      --violet: #7c3aed;
-      --blue: #2563eb;
-      --bg: linear-gradient(135deg, var(--violet), var(--blue));
-      --text: #ffffff;
-      --section-bg: rgba(255, 255, 255, 0.1);
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
     }
     body {
-      margin: 0;
-      font-family: sans-serif;
-      background: #0f172a;
-      color: var(--text);
-    }
-    header {
-      background: var(--bg);
-      padding: 2rem;
-      text-align: center;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2rem;
-    }
-    nav {
+      background: linear-gradient(135deg, #7F00FF, #007CF0);
+      color: white;
+      min-height: 100vh;
       display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin-top: 1rem;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
     }
-    nav button {
-      background: transparent;
-      border: 1px solid white;
-      padding: 0.5rem 1rem;
-      color: white;
-      cursor: pointer;
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
     }
-    section {
-      padding: 2rem;
-      max-width: 800px;
-      margin: auto;
-    }
-    .card {
-      background: var(--section-bg);
-      border-radius: 0.5rem;
-      padding: 1.5rem;
-      margin-bottom: 2rem;
-    }
-    footer {
+    p {
+      margin: 10px 0;
       text-align: center;
-      padding: 2rem;
-      font-size: 0.8rem;
-      opacity: 0.7;
     }
-    a.btn {
-      display: inline-block;
-      margin: 0.5rem 0.5rem 0;
-      padding: 0.75rem 1.25rem;
-      background: var(--bg);
-      color: white;
+    .button {
+      margin-top: 20px;
+      background: white;
+      color: #007CF0;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
       text-decoration: none;
-      border-radius: 4px;
+    }
+    .section {
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 12px;
+      width: 100%;
+      max-width: 600px;
+    }
+    .lang-switch {
+      position: absolute;
+      top: 20px;
+      right: 20px;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>VoxyVPN</h1>
-    <nav>
-      <button onclick="switchLang('ru')">RU</button>
-      <button onclick="switchLang('en')">EN</button>
-    </nav>
-  </header>
+  <div class="lang-switch">
+    <select onchange="changeLang(this.value)">
+      <option value="ru">🇷🇺 RU</option>
+      <option value="en">🇬🇧 EN</option>
+    </select>
+  </div>
 
-  <section id="main">
-    <div class="card" data-i18n="features">
-      <h2>Преимущества</h2>
-      <ul>
-        <li>Скорость до 10 Гбит/с</li>
-        <li>Безлимитный трафик и устройства</li>
-        <li>Обход блокировок DPI</li>
-        <li>Шифрование VLESS + Reality</li>
-      </ul>
-    </div>
+  <h1>VoxyVPN</h1>
+  <p>🛡 Безопасный, быстрый и анонимный VPN</p>
 
-    <div class="card" data-i18n="pricing">
-      <h2>Тарифы</h2>
-      <p>1 месяц — 129 ₽ / $1.49</p>
-      <p>3 месяца — 299 ₽ / $3.49</p>
-      <p>6 месяцев — 499 ₽ / $5.99</p>
-      <p>12 месяцев — 849 ₽ / $9.99</p>
-    </div>
+  <div class="section">
+    <h2>🌍 Серверы</h2>
+    <ul>
+      <li>🇳🇱 Нидерланды — 10 Гбит/с</li>
+      <li>🇫🇮 Финляндия — 1 Гбит/с</li>
+    </ul>
+  </div>
 
-    <div class="card" data-i18n="servers">
-      <h2>Серверы</h2>
-      <p>🇳🇱 Нидерланды — 10 Гбит/с</p>
-      <p>🇫🇮 Финляндия — 1 Гбит/с</p>
-    </div>
+  <div class="section">
+    <h2>💳 Тарифы</h2>
+    <p>1 месяц — 99 ₽ (~$1.09)</p>
+    <p>3 месяца — 199 ₽ (~$2.19)</p>
+    <p>6 месяцев — 349 ₽ (~$3.85)</p>
+    <p>12 месяцев — 559 ₽ (~$6.20)</p>
+  </div>
 
-    <div class="card" data-i18n="connect">
-      <h2>Подключение</h2>
-      <p>Используйте Hiddify для удобного подключения:</p>
-      <a href="https://hiddify.com" class="btn" target="_blank">Скачать Hiddify</a>
-      <a href="https://t.me/voxyvpn_bot" class="btn" target="_blank">Открыть Telegram-бота</a>
-    </div>
-  </section>
+  <div class="section">
+    <h2>🛠 Протокол</h2>
+    <p>VLESS + Reality</p>
+    <p>Без логов, обход DPI, шифрование</p>
+  </div>
 
-  <footer>
-    &copy; 2025 VoxyVPN — Privacy first.
-  </footer>
+  <a class="button" href="https://t.me/voxyvpn_bot" target="_blank">Открыть Telegram-бота</a>
 
   <script>
-    const translations = {
-      en: {
-        features: `
-          <h2>Features</h2>
-          <ul>
-            <li>Speed up to 10 Gbps</li>
-            <li>Unlimited traffic and devices</li>
-            <li>DPI bypass</li>
-            <li>VLESS + Reality encryption</li>
-          </ul>` ,
-        pricing: `
-          <h2>Pricing</h2>
-          <p>1 month — 129 ₽ / $1.49</p>
-          <p>3 months — 299 ₽ / $3.49</p>
-          <p>6 months — 499 ₽ / $5.99</p>
-          <p>12 months — 849 ₽ / $9.99</p>`,
-        servers: `
-          <h2>Servers</h2>
-          <p>🇳🇱 Netherlands — 10 Gbps</p>
-          <p>🇫🇮 Finland — 1 Gbps</p>` ,
-        connect: `
-          <h2>Connect</h2>
-          <p>Use Hiddify app for easy access:</p>
-          <a href="https://hiddify.com" class="btn" target="_blank">Download Hiddify</a>
-          <a href="https://t.me/voxyvpn_bot" class="btn" target="_blank">Open Telegram Bot</a>`
-      }
-    };
-
-    function switchLang(lang) {
-      for (const el of document.querySelectorAll("[data-i18n]")) {
-        const key = el.getAttribute("data-i18n");
-        if (lang === 'en' && translations.en[key]) {
-          el.innerHTML = translations.en[key];
-        }
-        if (lang === 'ru') location.reload(); // default
-      }
+    function changeLang(lang) {
+      alert("Мультиязычность скоро будет доступна. Сейчас работает только RU.");
     }
   </script>
 </body>
